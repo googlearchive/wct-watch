@@ -1,0 +1,42 @@
+{
+  "name": "wct-watch",
+  "version": "1.0.0",
+  "description": "A web-component-tester plugin to rerun tests when the filesystem changes.",
+  "main": "lib/plugin.js",
+  "scripts": {
+    "test": "gulp build-all",
+    "prepublish": "gulp build-all"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/PolymerLabs/wct-watch.git"
+  },
+  "keywords": [
+    "wct",
+    "testing",
+    "continuous-integration"
+  ],
+  "author": "The Polymer Project Authors",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/PolymerLabs/wct-watch/issues"
+  },
+  "homepage": "https://github.com/PolymerLabs/wct-watch#readme",
+  "dependencies": {
+    "minimatch": "^3.0.2",
+    "watch": "^0.19.1"
+  },
+  "devDependencies": {
+    "depcheck": "^0.6.3",
+    "fs-extra": "^0.30.0",
+    "gulp": "^3.9.1",
+    "gulp-tslint": "^5.0.0",
+    "gulp-typescript": "^2.13.6",
+    "gulp-typings": "^2.0.0",
+    "merge-stream": "^1.0.0",
+    "run-sequence": "^1.2.1",
+    "tslint": "^3.11.0",
+    "typescript": "^1.8.10"
+  },
+  "wct-plugin": {}
+}

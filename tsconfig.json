@@ -1,0 +1,34 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "isolatedModules": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "declaration": false,
+        "noImplicitAny": true,
+        "removeComments": false,
+        "preserveConstEnums": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "outDir": "lib"
+    },
+    "exclude": [
+        "node_modules"
+    ],
+    "filesGlob": [
+        "src/*.ts",
+        "custom_typings/*.d.ts",
+        "typings/index.d.ts",
+        "node_modules/typescript/lib/lib.core.es6.d.ts"
+    ],
+    "files": [
+        "src/plugin.ts",
+        "custom_typings/wct.d.ts",
+        "custom_typings/wd.d.ts",
+        "typings/index.d.ts"
+    ],
+    "atom": {
+        "rewriteTsconfig": true
+    }
+}
