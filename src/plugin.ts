@@ -1,6 +1,5 @@
-import * as watch from 'watch';
+import * as chokidar from 'chokidar';
 import * as wct from 'wct';
-import * as minimatch from 'minimatch';
 import * as events from 'events';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -37,14 +36,13 @@ class ChangeDetector extends events.EventEmitter {
   private basedir: string;
   private lastFiredAt = -Infinity;
   private debounceDuration = 0.2; // seconds
+  private watcher: fs.FSWatcher;
   constructor(basedir: string, ignoreGlobs: string[]) {
     super();
     this.basedir;
 
-    watch.watchTree(basedir, {
-      ignoreDotFiles: true,
-      filter: makeFilterFunction(ignoreGlobs)
-    }, () => {
+    this.watcher = chokidar.watch(basedir, {ignored: [/[\/\\]\./, ignoreGlobs]});
+    this.watcher.on('all', () => {
       this.changeDetected();
     });
   }
@@ -58,7 +56,7 @@ class ChangeDetector extends events.EventEmitter {
   }
 
   close() {
-    watch.unwatchTree(this.basedir);
+    this.watcher.close();
   }
 }
 
@@ -74,20 +72,6 @@ function getGlobsFromGitignore() {
       break;
     }
   }
-}
-
-function makeFilterFunction(globs: string[]) {
-  const minimatchers = globs.map((g) => new minimatch.Minimatch(g));
-  let filesWatched = 0;
-  return (filename: string) => {
-    const shouldSkip = minimatchers.some(
-        (matcher) => matcher.match(path.resolve(filename)));
-    if (!shouldSkip) {
-      filesWatched++;
-      debounce(() => console.log(`${filesWatched} files watched.`));
-    }
-    return !shouldSkip;
-  };
 }
 
 let timeout: NodeJS.Timer = null;

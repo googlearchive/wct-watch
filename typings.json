@@ -4,6 +4,7 @@
     "minimatch": "registry:npm/minimatch#3.0.0+20160211003958"
   },
   "globalDependencies": {
+    "chokidar": "registry:dt/chokidar#1.4.3+20160316155526",
     "node": "registry:env/node#4.0.0+20160622202520",
     "watch": "registry:dt/watch#0.0.0+20160316155526"
   }

@@ -23,8 +23,7 @@
   },
   "homepage": "https://github.com/PolymerLabs/wct-watch#readme",
   "dependencies": {
-    "minimatch": "^3.0.2",
-    "watch": "^0.19.1"
+    "chokidar": "^1.6.0"
   },
   "devDependencies": {
     "depcheck": "^0.6.3",
@@ -35,6 +34,7 @@
     "gulp-typings": "^2.0.0",
     "merge-stream": "^1.0.0",
     "run-sequence": "^1.2.1",
+    "tools-common": "github:polymer/tools-common",
     "tslint": "^3.11.0",
     "typescript": "^1.8.10"
   },
